@@ -1,26 +1,12 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+:root{--black:#050505;--white:#f5f2ea;--green:#00ff87;--green-dim:#00cc6a;--orange:#ff4d1c;--navy:#08091a;--surface:#111218;--border-green:rgba(0,255,135,0.15);--text-muted:#6b7280;--text-dim:#9ca3af}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px;-webkit-font-smoothing:antialiased}
+body{background:var(--navy);color:var(--white);font-family:'Space Grotesk',sans-serif;overflow-x:hidden}
+.font-display{font-family:'Bebas Neue',sans-serif}
+@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.6)}}
+.pulse-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulseDot 1.5s ease-in-out infinite}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-track{animation:marquee 22s linear infinite;will-change:transform}
+.hero-grid{background-image:linear-gradient(rgba(0,255,135,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,135,.04) 1px,transparent 1px);background-size:64px 64px}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border-green);border-radius:2px}
