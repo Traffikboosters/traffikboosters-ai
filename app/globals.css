@@ -1,12 +1,117 @@
 @import "tailwindcss";
-:root{--black:#050505;--white:#f5f2ea;--green:#00ff87;--green-dim:#00cc6a;--orange:#ff4d1c;--navy:#08091a;--surface:#111218;--border-green:rgba(0,255,135,0.15);--text-muted:#6b7280;--text-dim:#9ca3af}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px;-webkit-font-smoothing:antialiased}
-body{background:var(--navy);color:var(--white);font-family:'Space Grotesk',sans-serif;overflow-x:hidden}
-.font-display{font-family:'Bebas Neue',sans-serif}
-@keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.6)}}
-.pulse-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulseDot 1.5s ease-in-out infinite}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.marquee-track{animation:marquee 22s linear infinite;will-change:transform}
-.hero-grid{background-image:linear-gradient(rgba(0,255,135,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,135,.04) 1px,transparent 1px);background-size:64px 64px}
-::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border-green);border-radius:2px}
+
+:root {
+  --green: #00ff87;
+  --green-dim: #00cc6a;
+  --orange: #ff4d1c;
+  --navy: #08091a;
+  --navy-2: #0d0f24;
+  --surface: #111218;
+  --surface-2: #1a1b26;
+  --border: rgba(255,255,255,0.07);
+  --border-green: rgba(0,255,135,0.15);
+  --text-muted: #6b7280;
+  --text-dim: #9ca3af;
+  --white: #f5f2ea;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+@media (hover: none) { body { cursor: auto; } }
+
+.font-display { font-family: 'Bebas Neue', sans-serif; }
+
+/* ── Cursor ── */
+.cursor-dot {
+  position: fixed; top: 0; left: 0;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--green); pointer-events: none;
+  z-index: 9999; transform: translate(-50%,-50%);
+  transition: width .2s, height .2s, background .2s;
+  will-change: transform;
+}
+.cursor-ring {
+  position: fixed; top: 0; left: 0;
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--green); pointer-events: none;
+  z-index: 9998; transform: translate(-50%,-50%);
+  opacity: 0.5; transition: width .3s, height .3s, opacity .3s, border-color .3s;
+  will-change: transform;
+}
+body.cursor-hover .cursor-dot { width: 12px; height: 12px; background: var(--orange); }
+body.cursor-hover .cursor-ring { width: 56px; height: 56px; border-color: var(--orange); opacity: 0.3; }
+body.cursor-click .cursor-dot { width: 6px; height: 6px; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-green); border-radius: 2px; }
+
+/* ── Pulse dot ── */
+@keyframes pulseDot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(.6)} }
+.pulse-dot {
+  display: inline-block; width: 7px; height: 7px;
+  border-radius: 50%; background: var(--green);
+  animation: pulseDot 1.5s ease-in-out infinite;
+}
+
+/* ── Marquee ── */
+@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.marquee-track {
+  animation: marquee 22s linear infinite;
+  will-change: transform;
+}
+.marquee-track:hover { animation-play-state: paused; }
+
+/* ── Hero grid ── */
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(0,255,135,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,135,.04) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* ── Gradient border (pricing) ── */
+@property --angle { syntax:'<angle>'; initial-value:0deg; inherits:false; }
+@keyframes rotateBorder { from{--angle:0deg} to{--angle:360deg} }
+.gradient-border { position: relative; isolation: isolate; }
+.gradient-border::before {
+  content: ''; position: absolute; inset: -1px; border-radius: inherit;
+  background: conic-gradient(from var(--angle), var(--green), #00c8ff, var(--orange), var(--green));
+  animation: rotateBorder 3s linear infinite;
+  z-index: -1; opacity: 0; transition: opacity .3s;
+}
+.gradient-border:hover::before, .gradient-border.featured::before { opacity: 1; }
+
+/* ── Scroll reveal (initial state) ── */
+.reveal { opacity: 0; transform: translateY(50px); }
+.reveal.revealed { opacity: 1; transform: translateY(0); transition: opacity .8s ease, transform .8s ease; }
+
+/* ── Section pad ── */
+.section-pad { padding: 120px 0; }
+
+/* ── Float animation ── */
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+/* ── Spinner ── */
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner {
+  width: 20px; height: 20px;
+  border: 2px solid var(--border-green);
+  border-top-color: var(--green);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
