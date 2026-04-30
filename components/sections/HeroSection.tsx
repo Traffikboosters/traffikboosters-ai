@@ -40,23 +40,20 @@ export default function HeroSection() {
       className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-24 pb-20 px-8 md:px-12 hero-grid"
       style={{ background: "var(--navy)" }}
     >
-      {/* Radial glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{ background: "radial-gradient(ellipse 60% 50% at 50% 40%, rgba(0,255,135,0.07) 0%, transparent 70%)" }}
-        aria-hidden
+        aria-hidden="true"
       />
 
       <div ref={containerRef} className="relative z-10 max-w-7xl mx-auto w-full">
-        {/* Live badge */}
         <div data-fade className="opacity-0 flex items-center gap-2 mb-8 w-fit border border-[var(--border-green)] bg-[rgba(0,255,135,0.06)] px-3 py-1.5">
           <div className="pulse-dot" />
           <span className="text-[11px] font-bold tracking-[3px] uppercase" style={{ color: "var(--green)" }}>
-            AI Revenue Engine — Active
+            AI Revenue Engine Active
           </span>
         </div>
 
-        {/* Headline — each line in overflow:hidden for line reveal */}
         <h1 className="mb-0" aria-label="More Traffik. More Sales. Fully Automated.">
           {LINES.map((line, i) => (
             <div key={i} style={{ overflow: "hidden", lineHeight: 1, paddingBottom: "0.06em" }}>
@@ -77,38 +74,34 @@ export default function HeroSection() {
           ))}
         </h1>
 
-        {/* Subheading */}
         <p
           data-fade
           className="opacity-0 mt-8 text-[18px] leading-relaxed max-w-[540px]"
           style={{ color: "var(--text-dim)" }}
         >
           AI-Powered Growth Infrastructure built for businesses ready to scale fast.
-          Not a marketing agency — an <em>autonomous revenue machine.</em>
+          Not a marketing agency — an autonomous revenue machine.
         </p>
 
-        {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 mt-10">
           
             data-fade
             href="#capture"
             className="opacity-0 inline-flex items-center gap-2 text-black text-[14px] font-bold tracking-widest uppercase px-8 py-4 transition-colors"
             style={{ background: "var(--green)" }}
-            onMouseOver={e => (e.currentTarget.style.background = "var(--green-dim)")}
-            onMouseOut={e => (e.currentTarget.style.background = "var(--green)")}
           >
-            🔥 Get More Leads Now
+            Get More Leads Now
           </a>
           <Link
             data-fade
             href="/get-started"
-            className="opacity-0 inline-flex items-center gap-2 text-[var(--white)] text-[14px] font-semibold tracking-widest uppercase px-8 py-4 border border-[rgba(255,255,255,0.2)] hover:border-[var(--green)] hover:text-[var(--green)] transition-colors"
+            className="opacity-0 inline-flex items-center gap-2 text-[14px] font-semibold tracking-widest uppercase px-8 py-4 border border-[rgba(255,255,255,0.2)] hover:border-[var(--green)] transition-colors"
+            style={{ color: "var(--white)" }}
           >
-            ⚡ Get Free Growth Plan
+            Get Free Growth Plan
           </Link>
         </div>
 
-        {/* AI recommendation banner */}
         <div
           data-fade
           className="opacity-0 mt-8 inline-flex items-center gap-3 border border-[rgba(255,77,28,0.2)] bg-[rgba(255,77,28,0.06)] px-5 py-3 text-[13px]"
@@ -121,7 +114,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-30">
         <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: "var(--text-muted)" }}>Scroll</span>
         <div className="w-px h-8 animate-pulse" style={{ background: "var(--border-green)" }} />
