@@ -84,20 +84,8 @@ export default function HeroSection() {
         </p>
 
         <div data-fade className="opacity-0 flex flex-col sm:flex-row gap-4 mt-10">
-          
-            href="#capture"
-            className="inline-flex items-center gap-2 text-black text-[14px] font-bold tracking-widest uppercase px-8 py-4 transition-colors"
-            style={{ background: "var(--green)" }}
-          >
-            Get More Leads Now
-          </a>
-          <Link
-            href="/get-started"
-            className="inline-flex items-center gap-2 text-[14px] font-semibold tracking-widest uppercase px-8 py-4 border border-[rgba(255,255,255,0.2)] hover:border-[var(--green)] transition-colors"
-            style={{ color: "var(--white)" }}
-          >
-            Get Free Growth Plan
-          </Link>
+          <a href="#capture" className="inline-flex items-center gap-2 text-black text-[14px] font-bold tracking-widest uppercase px-8 py-4" style={{ background: "var(--green)" }}>Get More Leads Now</a>
+          <Link href="/get-started" className="inline-flex items-center gap-2 text-[14px] font-semibold tracking-widest uppercase px-8 py-4 border border-[rgba(255,255,255,0.2)]" style={{ color: "var(--white)" }}>Get Free Growth Plan</Link>
         </div>
 
         <div
