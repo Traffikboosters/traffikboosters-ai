@@ -83,19 +83,17 @@ export default function HeroSection() {
           Not a marketing agency — an autonomous revenue machine.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 mt-10">
+        <div data-fade className="opacity-0 flex flex-col sm:flex-row gap-4 mt-10">
           
-            data-fade
             href="#capture"
-            className="opacity-0 inline-flex items-center gap-2 text-black text-[14px] font-bold tracking-widest uppercase px-8 py-4 transition-colors"
+            className="inline-flex items-center gap-2 text-black text-[14px] font-bold tracking-widest uppercase px-8 py-4 transition-colors"
             style={{ background: "var(--green)" }}
           >
             Get More Leads Now
           </a>
           <Link
-            data-fade
             href="/get-started"
-            className="opacity-0 inline-flex items-center gap-2 text-[14px] font-semibold tracking-widest uppercase px-8 py-4 border border-[rgba(255,255,255,0.2)] hover:border-[var(--green)] transition-colors"
+            className="inline-flex items-center gap-2 text-[14px] font-semibold tracking-widest uppercase px-8 py-4 border border-[rgba(255,255,255,0.2)] hover:border-[var(--green)] transition-colors"
             style={{ color: "var(--white)" }}
           >
             Get Free Growth Plan
